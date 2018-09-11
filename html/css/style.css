@@ -1,0 +1,18 @@
+ h1{ color: #0000FF; text-align: center; background-color: #777777;}
+ h2{ color: green;
+      background: lightgrey;  
+      width: 600px;	  }
+div{ background: lightgrey; 
+      width: 600px;
+      height: 650px;
+      display: block;
+      float: 50%; }
+nav{ font-variant: small-caps
+      font-size: 150%;
+      font-family: Arial, Courier;
+      background: lightgrey;
+      width: 600px;}
+details{ font-style: italic;}
+summary{ font-style: normal;}
+footer{ background-color: #ffffff;
+      width: 340px; }
