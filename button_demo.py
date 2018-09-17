@@ -10,17 +10,18 @@ from Tkinter import *
 ON = 1
 OFF = 0
 # Define our pin usage:
-button1 = 23
-button2 = 24
-led1 = 25
-led2 = 26
+button1 = 12 
+button2 = 13
+led1 = 4
+led2 = 23
 # Set blink rate for global in ms and blank state
 led_blink_rate = 600
 led_state = OFF
 
 #Set up the GPIO ports
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(button1, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+GPIO.setwarnings(False)
+GPIO.setup(button1, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(button2, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(led1, GPIO.OUT)
 GPIO.setup(led2, GPIO.OUT)

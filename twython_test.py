@@ -1,6 +1,4 @@
 from twython import TwythonStreamer
-#  Note the initkeys.py is not included.  
-# For this program to run Twitter API keys are required.
 execfile("initkeys.py")
 
 hit_count = 0
@@ -11,10 +9,10 @@ class MyStreamer(TwythonStreamer):
          if 'text' in data:
              hit_count += 1
 #             print " Hit Count = ",hit_count
-         if hit_count >= 5:
-             print("Raspberry Pi")
+         if hit_count >= 3:
+             print("Ian G Harris is popular!")
              hit_count = 0
 
 stream = MyStreamer(c_k, c_s, a_t, a_s)
-stream.statuses.filter(track="Raspberry Pi")
+stream.statuses.filter(track="Ian G. Harris")
 

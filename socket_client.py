@@ -11,12 +11,13 @@ except mys.error:
      sys.exit()
 port = 4321 
 addr = "127.0.0.1"
+data = raw_input(" Enter Data: ")
 try:
    ainfo = socket.getaddrinfo(addr,port)
    mys.connect(ainfo[0][4])
 except mys.error:
    print"failed to connect"
    sys.exit()
-data = raw_input(" Enter Data ")
+
 mys.sendall(data)
 mys.close()

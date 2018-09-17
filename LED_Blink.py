@@ -1,8 +1,8 @@
 # From Web page - http://www.rpiblog.com/2012/09/using-gpio-of-raspberry-pi-to-blink-led.html
 import RPi.GPIO as GPIO
 import time
-out_pin1 = 25
-out_pin2 = 26
+out_pin1 = 4
+out_pin2 = 23
 # blinking function
 def blink(pin):
         GPIO.output(pin,GPIO.HIGH)
@@ -12,6 +12,7 @@ def blink(pin):
         return
 # to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 # set up GPIO output channel
 GPIO.setup(out_pin1, GPIO.OUT)
 GPIO.setup(out_pin2, GPIO.OUT)

@@ -6,7 +6,7 @@ import sys
 
 try:
      mys = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
-except mys.error:
+except:
      print("Failed to generate socket")
      sys.exit()
 port = 4321 
