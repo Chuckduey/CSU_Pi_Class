@@ -25,10 +25,10 @@ product_id 0x1234
 product_ver 0x0002
 
 # ASCII vendor string  (max 255 characters)
-vendor "Keysight Technologies"
+vendor "Any Company"
 
 # ASCII product string (max 255 characters)
-product "Keysight Technologies U3810A SN LP01-00008"
+product "This is a Product from Any Company"
 
 
 ########################################################################
