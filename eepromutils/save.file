@@ -1,0 +1,4 @@
+#This is a file that can be put in to the Raspberry Pi Hat
+#You can put anything into this file.
+#This can be python, java or C code, Executible  Anything
+#If you are seeing this file it is from the EEPROM programmed in this hat. 
