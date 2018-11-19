@@ -1,0 +1,12 @@
+"*":
+  core:
+    uriHandlerRegistration: "always"
+  "exception-reporting":
+    userId: "2954d2d5-ad0c-4b02-a480-c15f084898f7"
+  pymakr:
+    address: "192.168.10.174"
+    ctrl_c_on_connect: true
+    sync_file_types: [
+      "py"
+      "txt"
+    ]
