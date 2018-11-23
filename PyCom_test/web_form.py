@@ -39,8 +39,10 @@ def therm_to_temp(vr,vt):
        b = 0.000234125
        c = 8.76741e-08
        # vr is reference / 2 in codes
-       if vt < 1:
+       if vt < 10:
             return(-273)
+       if vr < 1000:
+           vr = 2048
        res = Ro*(vr*2/float(vt) - 1.0)
 #       tmp = 1/(1/To+1/Bcoef*math.log(res/Ro))
        tmp = 1/(a + b*math.log(res) + c*math.pow(math.log(res),3))
@@ -72,15 +74,15 @@ while True:
     #print(request)
     request_dec = request.decode()
     headers_alone = request_dec.split('\r\n')
-    for txt in headers_alone:
-        print(txt)
     if (headers_alone[0].find('POST') > -1):
         print('Found Post Request')
-        pos=request_dec.find('Relay_Word=0x')
-        try:
-            relay_word=int(request_dec[pos+11:],16)
-        except:
-            print('Conversion poblem')
+        pos=request_dec.find('Relay_Word=')
+        if (pos > 1):
+            try:
+                relay_word=int(request_dec[pos+11:],16)
+            except:
+                print('Conversion poblem')
+                print(request_dec)
     if (headers_alone[0].find('GET') > -1) | (headers_alone[0].find('POST') > -1):
         print("Got GET request")
         send_web(web_response)
