@@ -76,6 +76,14 @@ while True:
     headers_alone = request_dec.split('\r\n')
     if (headers_alone[0].find('POST') > -1):
         print('Found Post Request')
+        out_test = request_dec.find('logout=Logout')
+        if out_test > 1:
+            print('Exiting Program')
+            send_web(web_response)
+            send_web("<html><body><center> <font color='red'> <h1>Logging Out...Good Bye</h1><br>\n")
+            client_connection.close()
+            listen_socket.close()
+            sys.exit(retval=0)
         pos=request_dec.find('Relay_Word=')
         if (pos > 1):
             try:
