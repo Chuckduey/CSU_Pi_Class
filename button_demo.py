@@ -10,7 +10,7 @@ from Tkinter import *
 ON = 1
 OFF = 0
 # Define our pin usage:
-button1 = 12 
+button1 = 25 
 button2 = 13
 led1 = 4
 led2 = 23

@@ -36,7 +36,7 @@ def get_data():
      # Read data back from 0x00(00), 6 bytes
      # status, tHeight MSB1, tHeight MSB, tHeight LSB, temp MSB, temp LSB
      data = bus.read_i2c_block_data(mpl_addr, 0x00, 6)
-     print data
+     # print data
      # Convert the data to 20-bits
      tHeight = ((data[1] * 65536) + (data[2] * 256) + (data[3] & 0xF0)) / 16
      temp = ((data[4] * 256) + (data[5] & 0xF0)) / 16
