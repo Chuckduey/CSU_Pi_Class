@@ -3,6 +3,9 @@ import sys
 import smbus
 import time
 import RPi.GPIO as GPIO
+import LCD_Fun as LCD
+from adcPythonC import *
+
 # MPL3115A2 Address mpl_addr
 mpl_addr = 0x60
 update = 3000
@@ -16,9 +19,10 @@ GP8 = 25
 GP9 = 13
 GP10 = 26
 GP11 = 16
+adc_channel = 7 # Input pin for ADC Channel
 
 buttons = [GP8,GP9,GP10,GP11]
-
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 for button in buttons:
     GPIO.setup(button, GPIO.IN, pull_up_down = GPIO.PUD_UP)
@@ -30,7 +34,7 @@ bus = smbus.SMBus(1)
 relay = 0   # Set relay off
 
 # Define socket to be used for web page  80 is a normal web socket, but may be used for other things in the system.
-HOST, PORT = '', 80
+HOST, PORT = '', 88
 
 # Define the standard web response for a web page
 web_response = """\
@@ -73,7 +77,7 @@ def get_data():
 
 # Get I2C bus
 bus = smbus.SMBus(1)
-
+LCD.LCD_init()
 # Open up a socket server port
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -88,6 +92,9 @@ while True:
         GPIO.output(GP2, GPIO.LOW)
 # open socket
     client_connection, client_address = listen_socket.accept()
+    LCD.LCD_clear()
+    LCD.LCD_print(client_address[0])
+    print 'Client Address = ',client_address[0]
 # wait for response
     request = client_connection.recv(1024)
     print(request)
@@ -120,10 +127,14 @@ while True:
     if (headers_alone[0].find('GET') > -1) | (headers_alone[0].find('POST') > -1):
         print("Got GET request")
         out = get_data()
+        tempa = round(100*(adcRead(adc_channel) * 3.3/4095.0 -0.5),2)
+        print adcRead(adc_channel),tempa
         send_web(web_response)
         send_web(web_header)
-        send_web("<h3>Pressure = "+str(out[0]) + "mb  Altitude = "+str(out[1]) + " Feet<br>")
+        send_web("<h3>MPL3115A2 Readings<br>")
+        send_web("Pressure = "+str(out[0]) + "mb  Altitude = "+str(out[1]) + " Feet<br>")
         send_web("Temperature ="+str(out[2]) + "'C  Temperature = "+str(out[3]) + "'F<br></h3>")
+        send_web("<h2>TMP36 Reading = "+str(tempa)+"'C  "+str(round(tempa*9/5.0 +32,2))+"'F </h2>")  
         send_web("<font color='black'><h2> Relay Status = ")
         if(relay == 0 ):
             send_web("<font color='red'> Off<br><font color='black'>")
