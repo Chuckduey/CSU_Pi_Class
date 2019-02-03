@@ -6,6 +6,10 @@ import RPi.GPIO as GPIO
 import LCD_Fun as LCD
 from adcPythonC import *
 
+# Define socket to be used for web page  80 is a normal web socket, but may be used for other things in the system.
+HOST, PORT = '', 80
+
+# Define the standard web response for a web page
 # MPL3115A2 Address mpl_addr
 mpl_addr = 0x60
 update = 3000
@@ -33,10 +37,6 @@ GPIO.setup(GP3, GPIO.OUT)
 bus = smbus.SMBus(1)
 relay = 0   # Set relay off
 
-# Define socket to be used for web page  80 is a normal web socket, but may be used for other things in the system.
-HOST, PORT = '', 88
-
-# Define the standard web response for a web page
 web_response = """\
 HTTP/1.1 200 OK
 
@@ -128,7 +128,6 @@ while True:
         print("Got GET request")
         out = get_data()
         tempa = round(100*(adcRead(adc_channel) * 3.3/4095.0 -0.5),2)
-        print adcRead(adc_channel),tempa
         send_web(web_response)
         send_web(web_header)
         send_web("<h3>MPL3115A2 Readings<br>")
