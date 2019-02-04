@@ -7,29 +7,31 @@ mraa_gpio_context MCP3208_DOUT;
 mraa_gpio_context MCP3208_CLK;
 mraa_gpio_context MCP3208_CS;
 /*
- *  * Function to be called from Python
- *   */
-static PyObject* py_myFunction(PyObject* self, PyObject* args)
+* to compile and create a share object run the following command
+* gcc -shared -I /usr/include/python2.7/ -l python2.7 -l mraa -o adcPythonC.so adcPythonC.c
+* Function to be called from Python
+*/
+static PyObject* py_testFunction(PyObject* self, PyObject* args)
 {
 	  char *s = "Hello from C!";
-	    return Py_BuildValue("s", s);
+	  return Py_BuildValue("s", s);
 }
 
 /*
- *  * Another function to be called from Python
- *   */
+ * Read ADC Function set up for a MCP3208 using bit bang mode. 
+ */
 static PyObject* py_adcRead(PyObject* self, PyObject* args)
 {
-	int ch, i,val;
-	PyArg_ParseTuple(args, "i", &ch);
+	int channel, i,val;
+	PyArg_ParseTuple(args, "i", &channel);
 	mraa_gpio_write (MCP3208_DIN, 0);
 	mraa_gpio_write (MCP3208_CLK, 0);
 	mraa_gpio_write (MCP3208_CS, 0);
 
-	ch = ch | 0x18;
+	channel = channel | 0x18;
 	for (i = 0; i < 5; i ++)
 	{
-		if (ch & 0x10)
+		if (channel & 0x10)
 		{
 			mraa_gpio_write (MCP3208_DIN, 1);
 		}
@@ -37,7 +39,7 @@ static PyObject* py_adcRead(PyObject* self, PyObject* args)
 		{
 			mraa_gpio_write (MCP3208_DIN, 0);
 		}
-		ch <<= 1;
+		channel <<= 1;
 
 		mraa_gpio_write (MCP3208_CLK, 0);
 		mraa_gpio_write (MCP3208_CLK, 1);
@@ -65,17 +67,18 @@ static PyObject* py_adcRead(PyObject* self, PyObject* args)
 }
 
 /*
- *  * Bind Python function names to our C functions
- *   */
+ * Bind Python function names to the C functions
+ */
 static PyMethodDef adcPythonC_methods[] = {
-	  {"myFunction", py_myFunction, METH_VARARGS},
-	    {"adcRead", py_adcRead, METH_VARARGS},
-	      {NULL, NULL}
+	  {"testFunction", py_testFunction, METH_VARARGS},
+	  {"adcRead", py_adcRead, METH_VARARGS},
+	  {NULL, NULL}
 };
 
 /*
- *  * Python calls this to let us initialize our module
- *   */
+ * This is called on initialization of the module.  
+ * Put set up information here
+ */
 void initadcPythonC()
 {
 	(void) Py_InitModule("adcPythonC", adcPythonC_methods);
