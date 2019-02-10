@@ -96,10 +96,17 @@ while True:
     LCD.LCD_print(client_address[0])
     print 'Client Address = ',client_address[0]
 # wait for response
-    request = client_connection.recv(1024)
+    try:
+
+        request = client_connection.recv(1024)
+    except:
+        request = "Null"
     print(request)
 # Change response from bytes to regular text
-    request_dec = request.decode()
+    try:
+        request_dec = request.decode()
+    except:
+        request_dec = "Bad Decode"
 # Look at the various lines coming back.  See if it is a GET or POST  If it is a POST look for our data
     headers_alone = request_dec.split('\r\n')
 	# Find out what type of request it is POST = data coming back.  GET is a regular request.

@@ -22,6 +22,9 @@ while True:
      while True:
         conn, addr = mys.accept()
         print 'Got connection from', addr
-        data = conn.recv(200)
-        print data
+        try:
+           data = conn.recv(256)
+           print data
+        except:
+            print "No Packets"
         conn.close()                # Close the connection
