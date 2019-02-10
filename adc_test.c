@@ -133,7 +133,7 @@ void clear_LCD (void)
 int main(int argc, char** argv)
 {
         char buffer[40]; // One line of display
-        int adc_chan = 7;
+        int adc_chan = 6;
         mraa_init();
         int rcount=0;
         int res;

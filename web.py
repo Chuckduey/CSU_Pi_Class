@@ -23,7 +23,7 @@ GP8 = 25
 GP9 = 13
 GP10 = 26
 GP11 = 16
-adc_channel = 7 # Input pin for ADC Channel
+adc_channel = 6 # Input pin for ADC Channel
 
 buttons = [GP8,GP9,GP10,GP11]
 GPIO.setwarnings(False)
