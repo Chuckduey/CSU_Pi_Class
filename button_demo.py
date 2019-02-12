@@ -1,6 +1,7 @@
 #
 # Added Tkinter interface Chuck Duey 8/20/2015
 # Dual LED 9/24/2016 Chuck Duey
+# Changed to Relay toggle rate
 # Import the modules
 import RPi.GPIO as GPIO
 import time
@@ -44,13 +45,13 @@ def blinkChange(channel):
      if channel == button2:
           if led_blink_rate < 2000:
               led_blink_rate += 100
-     clock.config(text="LED Blink Rate = "+str(led_blink_rate))
+     clock.config(text="Relay Toggle Rate = "+str(led_blink_rate)+" ms")
 # Define Tk root
 root = Tk ()
 root.title("Button Demo")
 clock = Label(root, font=('times', 20, 'bold'),bg='green')
 clock.pack(fill=BOTH, expand=1)
-clock.config(text="LED Blink Rate = "+str(led_blink_rate))
+clock.config(text="Relay Toggle Rate = "+str(led_blink_rate)+" ms")
 
 # Main 
 # Set up events
