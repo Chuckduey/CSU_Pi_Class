@@ -9,7 +9,6 @@
 import time
 from Tkinter import *
 import mraa
-import smbus
 import time
 # MPL3115A2 Address mpl_addr
 mpl_addr = 0x60
