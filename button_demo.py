@@ -11,8 +11,8 @@ from Tkinter import *
 ON = 1
 OFF = 0
 # Define our pin usage:
-button1 = 25 
-button2 = 13
+button1 = 24 
+button2 = 25
 led1 = 4
 led2 = 23
 # Set blink rate for global in ms and blank state

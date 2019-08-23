@@ -18,14 +18,14 @@ GP3 = 22
 GP4 = 23
 GP5 = 7
 GP6 = 19
-GP7 = 18
+GP7 = 24
 GP8 = 25
 GP9 = 13
 GP10 = 26
 GP11 = 16
 adc_channel = 6 # Input pin for ADC Channel
 
-buttons = [GP8,GP9,GP10,GP11]
+buttons = [GP7,GP8,GP9,GP10]
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 for button in buttons:
