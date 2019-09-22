@@ -12,6 +12,7 @@ GP9 = 13
 GP10 = 26
 GP11 = 16
 
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(GP7, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(GP8, GPIO.IN, pull_up_down = GPIO.PUD_UP)

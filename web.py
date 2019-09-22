@@ -7,7 +7,7 @@ import LCD_Fun as LCD
 from adcPythonC import *
 
 # Define socket to be used for web page  80 is a normal web socket, but may be used for other things in the system.
-HOST, PORT = '', 80
+HOST, PORT = '', 1080
 
 # Define the standard web response for a web page
 # MPL3115A2 Address mpl_addr
