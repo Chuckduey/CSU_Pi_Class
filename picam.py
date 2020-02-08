@@ -3,6 +3,6 @@ import time
 
 camera = picamera.PiCamera()
 
-camera.start_preview(fullscreen=False,window = (100,20,1280,1024))
-time.sleep(10)
+camera.start_preview(fullscreen=True,rotation=90)
+time.sleep(30)
 camera.stop_preview()
