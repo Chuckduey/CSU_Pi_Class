@@ -11,7 +11,7 @@ update = 5000
 
 #
 def update_ip():
-     global clock
+     global frame
      try:
          gw = os.popen("ip -4 route show default").read().split()
          s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -24,11 +24,11 @@ def update_ip():
          gateway = "None"
          host =  "None"
          ipaddr = "None"
-     clock.config(text="Host name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="w")
-     clock.after(update,update_ip)
+     frame.config(text="Host name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="c")
+     frame.after(update,update_ip)
      
 def update_ip_nl():
-     global clock
+     global frame
      gw = os.popen("ip -4 route show default").read().split()
      s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
      s.connect((gw[2], 0))
@@ -36,18 +36,32 @@ def update_ip_nl():
      gateway = gw[2]
      host = socket.gethostname()
      s.close()
-     clock.config(text="Host Name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="w")
+     frame.config(text="Host Name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="c")
 
 root = Tk ()
 root.title("IP Adresses")
-clock = Label(root, font=('times', 20, 'bold'),bg='green')
-clock.pack(fill=BOTH, expand=1)
-clock.config(text="Host name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="w")
+windowWidth = root.winfo_reqwidth()
+windowHeight = root.winfo_reqheight()
+ 
+# Gets both half the screen width/height and window width/height
+positionRight = int(root.winfo_screenwidth()/2 - windowWidth/2)
+positionDown = int(root.winfo_screenheight()/2 - windowHeight/2)
+ 
+# Positions the window in the center of the page.
+root.geometry("+{}+{}".format(positionRight, positionDown))
+ 
+frame1 = Text(root, height=5, width=41,bg='#2f2f34')
+frame = Label(root, font=('times', 20, 'bold'),bg='#2f2f34',fg='#cdcdd1')
+frame.pack(fill=BOTH, expand=1)
+frame1.pack()
+logo = PhotoImage(file='/home/pi/Colorado-Hack-a-Thon/Keysight_Logo.PNG')
+frame1.image_create("current",image=logo)
+frame.config(text="Host name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="c")
 b=Button(root, text="Refresh", anchor=S, command=update_ip_nl)
 b.pack()
 #time.sleep(5)
 # Main 
-clock.after(update,update_ip)
+frame.after(update,update_ip)
 
 # Start main loop
 root.mainloop( )
