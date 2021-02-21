@@ -24,22 +24,22 @@ echo "State is = ",$state;
          $setmode4 = shell_exec("/usr/bin/gpio -g mode 4 out");
          $setmode26 = shell_exec("/usr/bin/gpio -g mode 22 out");
         if($state & 1){
-                $gpio_on1 = exec("/usr/bin/gpio write 4 0");
+                $gpio_on1 = exec("/usr/bin/gpio -g write 4 0");
                 $but1_color="green";
                 echo " Relay 1 is on , ";
         }
         else{
-                $gpio_off1 = exec("/usr/bin/gpio write 4 1");
+                $gpio_off1 = exec("/usr/bin/gpio -g write 4 1");
                 $but1_color="red";
                 echo " Relay 1 is off , ";
         }
         if($state & 2){
-                $gpio_on2 = exec("/usr/bin/gpio write 22 0");
+                $gpio_on2 = exec("/usr/bin/gpio -g write 22 0");
                 echo " LED 2 is on ";
                 $but2_color="green";
         }
         else{
-                $gpio_off2 = exec("/usr/bin/gpio write 22 1");
+                $gpio_off2 = exec("/usr/bin/gpio -g write 22 1");
                 echo " LED 2 is off ";
                 $but2_color="red";
         }
