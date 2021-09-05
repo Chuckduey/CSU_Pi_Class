@@ -80,7 +80,7 @@ HTTP/1.1 200 OK
 """
 
 # Title block for the web page
-web_header = '<html><body><head><meta http-equiv="refresh" content="10"></head><center> <font color="blue"> <h1>Project Board Readings</h1>\n'
+web_header = '<html><body><head><meta http-equiv="refresh" content="10"></head><center> <font color="blue"> <h1>I2C Environmental Readings</h1>\n'
 
 # Function to send the data to the socket.  Will close the connection if there is an error
 def send_web(string_data):
