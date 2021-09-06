@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # I2C Ozone Sensor minimal 
 # the function returns the average ppm if it's valid number, or -1 if is not valid
 # read mode = measure_mode_auto

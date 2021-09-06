@@ -1,9 +1,10 @@
+#!/usr/bin/python3
 #
 # Dipslays the IP address,  Host name and Gateway
 import os
 import socket
 import time
-from Tkinter import *
+from tkinter import *
 host = "None"
 ipaddr = "None"
 gateway = "None"
@@ -54,7 +55,7 @@ frame1 = Text(root, height=5, width=41,bg='#2f2f34')
 frame = Label(root, font=('times', 20, 'bold'),bg='#2f2f34',fg='#cdcdd1')
 frame.pack(fill=BOTH, expand=1)
 frame1.pack()
-logo = PhotoImage(file='/home/pi/Colorado-Hack-a-Thon/Keysight_Logo.PNG')
+logo = PhotoImage(file='./Keysight_Logo.PNG')
 frame1.image_create("current",image=logo)
 frame.config(text="Host name = "+host+"\nIp Address = "+ ipaddr + "\nGateway =" + gateway, anchor="c")
 b=Button(root, text="Refresh", anchor=S, command=update_ip_nl)

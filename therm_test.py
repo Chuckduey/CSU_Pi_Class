@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
  
-from Tkinter import *
-import Tkinter as tk
+from tkinter import *
+import tkinter as tk
 import spidev
 import smbus
 import time
@@ -135,7 +135,7 @@ def tick():
     global time1,sensor_set
     # get the current local time from the PC
     for sensor in sensor_set:
-	   sensor.update()
+        sensor.update()
 
     time2 = time.strftime('%H:%M:%S')
     # if time string has changed, update it
@@ -211,7 +211,7 @@ if os.path.isfile(eeprom_file):
       sensor_set.append(sensor)
    fp.close()
 else:
-	print'The hardway!!!/n'
+	print('The hardway!!!/n')
 	sensor = sensor_channel(0,0,1,'Bits',0)
 	sensor_set.append(sensor)
 	sensor = sensor_channel(1,0,1,'Bits',0)

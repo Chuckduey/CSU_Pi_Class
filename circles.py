@@ -1,7 +1,7 @@
-#
+#!/usr/bin/python3
 import time
 import math
-import Tkinter as tk
+import tkinter as tk
 screen_height = 400
 screen_width = 400
 center_x = screen_width/2

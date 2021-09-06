@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # SPDX-FileCopyrightText: 2020 by Bryan Siepert, written for Adafruit Industries
 #
 # SPDX-License-Identifier: Unlicense

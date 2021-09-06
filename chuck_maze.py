@@ -1,14 +1,14 @@
+#!/usr/bin/python3
 # This is a modified version of the raspberrypi.org marble maze.  
 # This reads in a file that has a maze that can be created by th chuck_pain program.
 # nJoy   Chuck
 
 from sense_hat import SenseHat
-
 from time import sleep
-from Tkinter import *
-from tkFont import Font
-import Tkinter as tk
-import tkFileDialog
+from tkinter import *
+import tkinter as tk
+from tkinter import filedialog
+
 
 # File name to save and load from
 file_name="maze.sav"
@@ -33,7 +33,7 @@ def get_int(str_in): # Input string of integers, output tuple of integers.
     return(tuple(ints_out))
 
 root = Tk()  # Get a TK window
-ifile=tkFileDialog.askopenfile(mode="r",initialfile=file_name)
+ifile=filedialog.askopenfile(mode="r",initialfile=file_name)
 if ifile is None:
      maze = [[r,r,r,r,r,r,r,r],
              [r,b,b,b,b,b,b,r],

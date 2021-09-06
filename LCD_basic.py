@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Distributed with a free-will license.
 #
 #This is basic functions for the LCD display 
@@ -26,7 +27,7 @@ def LCD_init():
    bus0.write_i2c_block_data(LCD_Addr,0,init2)
 
 
-def LCD_clear():
+def LCD_clear():#!/usr/bin/python3
         buf = [0x00,0x01];
         bus0.write_i2c_block_data(LCD_Addr,0,buf)  #Clear LCD
 

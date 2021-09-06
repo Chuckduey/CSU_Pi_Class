@@ -1,8 +1,8 @@
-#
+#!/usr/bin/python3
 import time
 import math
 import re
-import Tkinter as tk
+import tkinter as tk
 import serial
 port = "/dev/ttyACM0"
 screen_height = 450
@@ -13,11 +13,11 @@ sin_30 = 100
 cos_30 = 173
 rad=4
 min_mag=0.1
-q1="AFF0000"+b'13'+b'10' 
-q2="A00FF00"+b'13'+b'10'
-q3="A0000FF"+b'13'+b'10'
-q4="AFFFF00"+b'13'+b'10'
-q5="AFFFFFF"+b'13'+b'10'
+q1=str.encode("AFF0000"+"\r\n")
+q2=str.encode("A00FF00"+"\r\n")
+q3=str.encode("A0000FF"+"\r\n")
+q4=str.encode("AFFFF00"+"\r\n")
+q5=str.encode("AFFFFFF"+"\r\n")
 ser = serial.Serial(port=port, baudrate=9600)
 ser.write(q1)
 cur_led=q1
@@ -57,7 +57,7 @@ y = 10
 root.geometry('%dx%d+%d+%d' % (screen_width, screen_height,0,-5))
 while True:
     ser_in = ser.readline()
-    out_vec = re.findall(r"[-+]?\d*\.\d+|\d+",ser_in)
+    out_vec = re.findall(r"[-+]?\d*\.\d+|\d+",ser_in.decode("utf-8"))
     if len(out_vec) > 3:
          x = float(out_vec[1])*150/9.8
          y = float(out_vec[0])*150/9.8

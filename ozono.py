@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # I2C Ozone Sensor
 
 # Device: https://is.gd/ai1Qdi & C library: https://github.com/DFRobot/DFRobot_OzoneSensor

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # From Web page - http://www.rpiblog.com/2012/09/using-gpio-of-raspberry-pi-to-blink-led.html
 import RPi.GPIO as GPIO
 import time

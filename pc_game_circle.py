@@ -1,10 +1,10 @@
-#
+#!/usr/bin/python3
 import time
 import math
 import re
 import tkinter as tk
 import serial
-port = "com50"
+port = "com5" ##### Set you Comm port for the Circuit Playground Serial port
 screen_height = 450
 screen_width = 450
 center_x = screen_width/2

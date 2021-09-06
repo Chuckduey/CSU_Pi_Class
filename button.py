@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # File to test all 4 buttons.
 import RPi.GPIO as GPIO
 import time
@@ -22,18 +23,18 @@ GPIO.setup(GP2, GPIO.OUT)
 GPIO.setup(GP3, GPIO.OUT)
 
 while True:
-	if(GPIO.input(GP7) == 0):
-	  GPIO.output(GP2, GPIO.LOW)
-          print("Button 1 pressed")
-	if(GPIO.input(GP8) == 0 ):
-	  GPIO.output(GP2, GPIO.HIGH)
-          print("Button 2 pressed")
-	if(GPIO.input(GP9) == 0 ):
-	  GPIO.output(GP3, GPIO.HIGH)
-          print("Button 3 pressed")
-	if(GPIO.input(GP10) == 0 ):
-	  GPIO.output(GP3, GPIO.LOW)
-          print("Button 4 pressed")
+   if(GPIO.input(GP7) == 0):
+      GPIO.output(GP2, GPIO.LOW)
+      print("Button 1 pressed")
+   if(GPIO.input(GP8) == 0 ):
+      GPIO.output(GP2, GPIO.HIGH)
+      print("Button 2 pressed")
+   if(GPIO.input(GP9) == 0 ):
+      GPIO.output(GP3, GPIO.HIGH)
+      print("Button 3 pressed")
+   if(GPIO.input(GP10) == 0 ):
+      GPIO.output(GP3, GPIO.LOW)
+      print("Button 4 pressed")
 GPIO.cleanup()
 
 
