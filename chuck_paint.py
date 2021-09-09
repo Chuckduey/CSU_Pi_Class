@@ -1,20 +1,25 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # Chuck paint for Sense Hat 
 # This program can draw any color on any square on a Sense Hat.  
 # This can also save the picture in a text format that can be read back in.
 # There is also a modification to tthis that can create the maze for the raspberrypi.or marble maze.
 # This program makes heavy use of TKinter.
 # nJoy   Chuck 
+from sense_hat import SenseHat
+from time import sleep
+from tkinter import *
+import tkinter as tk
+from tkinter import filedialog
 
-from Tkinter import *
-from tkFont import Font
-import Tkinter as tk
-import tkFileDialog
-import spidev
-import smbus
+#from Tkinter import *
+#from tkFont import Font
+#import Tkinter as tk
+#import tkFileDialog
+#import spidev
+#import smbus
 import time
 import os
-from sense_hat import SenseHat
+#from sense_hat import SenseHat
 
 # File name to save and load from
 file_name="chuck.sav"
@@ -118,7 +123,7 @@ def maze_convert():  # Convert picture to maze values if red > 128 = wall green 
 def load_file():
     global sense_image, buts, sense
 
-    ifile=tkFileDialog.askopenfile(mode="r",initialfile=file_name)
+    ifile=filedialog.askopenfile(mode="r",initialfile=file_name)
     if ifile is None:
        return
 
@@ -136,7 +141,7 @@ def load_file():
 def save_file():
     global sense_image
 
-    ifile=tkFileDialog.asksaveasfile(mode="w",initialfile=file_name)
+    ifile=filedialog.asksaveasfile(mode="w",initialfile=file_name)
     if ifile is None:
        return
 
@@ -182,15 +187,15 @@ for x in range(8):
         col_buts.append(b)
 # Make spin boxes for color settings with lables above and decimal values below
 sp_val=[]
-red_lab=Label(frame,text="Red", fg="red", font = Font(size=14))
+red_lab=Label(frame,text="Red", fg="red", font = ("Courier",14))
 red_lab.grid(row=8,column=0,columnspan=2,pady=3)
-grn_lab=Label(frame,text="Green", fg="green", font = Font(size=14))
+grn_lab=Label(frame,text="Green", fg="green", font = ("Courier",14))
 grn_lab.grid(row=8,column=3,columnspan=2,pady=3)
-blu_lab=Label(frame,text="Blue", fg="blue", font = Font(size=14))
+blu_lab=Label(frame,text="Blue", fg="blue", font = ("Courier",14))
 blu_lab.grid(row=8,column=6,columnspan=2,pady=3)
 var=[StringVar(), StringVar(), StringVar(), StringVar(), StringVar(), StringVar()]
 for x in range(6):
-   th=Spinbox(frame,values=hex_vals, width=2, font=Font(size=14), textvariable=var[x],command=update_paint)
+   th=Spinbox(frame,values=hex_vals, width=2, font=("Courier",14), textvariable=var[x],command=update_paint)
    th.grid(row=9,column=x+x//2,columnspan=1, pady=4)
    var[x].set('7')
    sp_val.append(th)
@@ -202,27 +207,27 @@ paint=(rout,gout,bout)
 
 paint_button=Button(frame, bg=color_conv(paint),  height=2, width=3)
 paint_button.grid(row=9, column=8)
-red_val=Label(frame,text=str(rout), fg="red", font = Font(size=14))
+red_val=Label(frame,text=str(rout), fg="red", font = ("Courier",14))
 red_val.grid(row=10,column=0,columnspan=2,pady=3)
-grn_val=Label(frame,text=str(gout), fg="green", font = Font(size=14))
+grn_val=Label(frame,text=str(gout), fg="green", font = ("Courier",14))
 grn_val.grid(row=10,column=3,columnspan=2,pady=3)
-blu_val=Label(frame,text=str(bout), fg="blue", font = Font(size=14))
+blu_val=Label(frame,text=str(bout), fg="blue", font = ("Courier",14))
 blu_val.grid(row=10,column=6,columnspan=2,pady=3)
 
 # Buttons for save, load and maze fuctions
-load_button=Button(frame, bg="grey", text="load", font = Font(size=14), command=load_file)
+load_button=Button(frame, bg="grey", text="load", font = ("Courier",14), command=load_file)
 load_button.grid(row=11,column=0, columnspan=2, pady = 5)
-save_button=Button(frame, bg="grey", text="save", font = Font(size=14), command=save_file)
+save_button=Button(frame, bg="grey", text="save", font = ("Courier",14), command=save_file)
 save_button.grid(row=11,column=2, columnspan=2, pady = 5)
 
-maze_conv=Button(frame, bg="grey", text="mz conv", font = Font(size=14), command=maze_convert)
+maze_conv=Button(frame, bg="grey", text="mz conv", font = ("Courier",14), command=maze_convert)
 maze_conv.grid(row=11,column=4, columnspan=2, pady = 5)
 
-maze_frm=Button(frame, bg="grey", text="frame", font = Font(size=14), command=lambda p=default_frame: set_buffer(p))
+maze_frm=Button(frame, bg="grey", text="frame", font = ("Courier",14), command=lambda p=default_frame: set_buffer(p))
 maze_frm.grid(row=11,column=6, columnspan=2, pady = 5)
 
 
-clr_but=Button(frame, bg="grey", text="clr", font = Font(size=14), command=lambda p=clear_pxls: set_buffer(p))
+clr_but=Button(frame, bg="grey", text="clr", font = ("Courier",14), command=lambda p=clear_pxls: set_buffer(p))
 clr_but.grid(row=11,column=8, columnspan=1, pady = 5)
 
 sense.set_pixels(sense_image)

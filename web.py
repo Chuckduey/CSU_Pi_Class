@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import socket
 import sys
 import smbus
@@ -94,7 +95,7 @@ while True:
     client_connection, client_address = listen_socket.accept()
     LCD.LCD_clear()
     LCD.LCD_print(client_address[0])
-    print 'Client Address = ',client_address[0]
+    print('Client Address = ',client_address[0])
 # wait for response
     try:
 

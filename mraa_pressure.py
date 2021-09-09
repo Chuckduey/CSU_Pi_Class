@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Distributed with a free-will license.
 
 # Use it any way you want, profit or free, provided it fits in the licenses of its associated works.
@@ -7,7 +8,7 @@
 #
 # TK code added by Chuck Duey
 import time
-from Tkinter import *
+from tkinter import *
 import mraa
 import time
 # MPL3115A2 Address mpl_addr

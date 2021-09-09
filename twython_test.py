@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from twython import TwythonStreamer
 execfile("initkeys.py")
 

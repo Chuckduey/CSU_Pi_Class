@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Distributed with a free-will license.
 #
 #This is basic functions for the LCD display 

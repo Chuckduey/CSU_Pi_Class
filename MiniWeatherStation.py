@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import json
 import sys
@@ -7,11 +7,8 @@ import datetime
 
 # libraries
 import sys
-import urllib2
-import json
-from sense_hat import SenseHat
 
-# Oauth JSON File
+from sense_hat import SenseHat
 
 # How long to wait (in seconds) between measurements.
 FREQUENCY_SECONDS      = 10
@@ -19,7 +16,7 @@ FREQUENCY_SECONDS      = 10
 
 sense = SenseHat()
 sense.clear()		
-print 'Press Ctrl-C to quit.'
+print ('Press Ctrl-C to quit.')
 worksheet = None
 while True:
 
@@ -37,8 +34,8 @@ while True:
 	sense.show_message(info, text_colour=[255, 0, 0])
 	
 	# Print
-	print "Temperature (C): ", temp
-	print "Humidity: ", humidity
-	print "Pressure: ", pressure, "\n"
-        time.sleep(FREQUENCY_SECONDS)
+	print( "Temperature (C): ", temp)
+	print( "Humidity: ", humidity)
+	print( "Pressure: ", pressure, "\n")
+	time.sleep(FREQUENCY_SECONDS)
 

@@ -1,10 +1,10 @@
-#
+#!/usr/bin/python3
 # Added Tkinter interface Chuck Duey 8/20/2015
 # Dual LED 9/24/2016 Chuck Duey
 # Import the modules
 import RPi.GPIO as GPIO
 import time
-from Tkinter import *
+from tkinter import *
 
 # Define our statics
 ON = 1

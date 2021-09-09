@@ -78,7 +78,7 @@ static PyMethodDef adcPythonC_methods[] = {
 /*
  * This is called on initialization of the module.  
  * Put set up information here
- */
+ *
 void initadcPythonC()
 {
 	(void) Py_InitModule("adcPythonC", adcPythonC_methods);
@@ -90,6 +90,25 @@ void initadcPythonC()
 	mraa_gpio_dir(MCP3208_DIN, MRAA_GPIO_OUT_HIGH);
 	mraa_gpio_dir(MCP3208_DOUT, MRAA_GPIO_IN);
 	mraa_gpio_dir(MCP3208_CLK, MRAA_GPIO_OUT);
-	mraa_gpio_dir(MCP3208_CS, MRAA_GPIO_OUT);
+	mraa_gpio_dir(MCP3208_CS, MRAA_GPIO_OUT); */
+static struct PyModuleDef adcPythonC =
+{
+    PyModuleDef_HEAD_INIT,
+    "adcPythonC", /* name of module */
+    "",          /* module documentation, may be NULL */
+    -1,          /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
+    adcPythonC_methods
+};
+
+
+/*
+ * This is called on initialization of the module.  
+ * Put set up information here -  utilizing Python 3
+ */
+PyMODINIT_FUNC PyInit_adcPythonC(void)
+{
+        return PyModule_Create(&adcPythonC);                             
 
 }
+
+

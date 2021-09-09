@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import socket
 import sys
 # Define socket to be used for web page  80 is a normal web socket, but may be used for other things in the system.
@@ -9,7 +10,7 @@ HTTP/1.1 200 OK
 Set-Cookie: session=12345
 
 """
-web_line = '<html><h1>Hello World</h1></html>\n'
+web_line = '<html style="color:blue; text-align:center;"><h1>Hello World</h1></html>\n'
 # Open up a socket server port
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
