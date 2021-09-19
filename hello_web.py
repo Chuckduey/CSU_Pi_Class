@@ -29,7 +29,8 @@ while True:
     print(request)
     try:
        client_connection.sendall(web_response.encode('utf8'))
-       client_connection.sendall(web_line.encode('utf8'))
+       for n in range(5):
+           client_connection.sendall(web_line.encode('utf8'))
     except:
        client_connection.close()
        print("Web Exception")
